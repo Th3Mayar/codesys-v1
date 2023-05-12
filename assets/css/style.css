@@ -1,0 +1,94 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: url(../images/fondoSystem-1280x750.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.login-register{
+    background: rgb(0, 0, 0, 0.35);
+	width: 100%;
+	height: 100vh;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-register form{
+    border-radius: 10px;
+    background: #FFF;
+    width: 400px;
+    padding: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.login-register form img{
+	margin: 15px auto;
+	text-align: center;
+	display: block;
+}
+
+.login-register form h2{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color:rgb(107, 42, 25);
+}
+
+.login-register form input{
+	width:90%;
+	padding: 5px;
+	border:none;
+	background-color: #f2f2f2;
+	font-size: 16pt;
+	outline: none;
+	display: block;
+	margin: 25px auto;
+	border-radius: 5px;
+	border: 1px solid  #85929e;
+	text-align: center;
+}
+
+.login-register form button{
+    padding:10px 40px;
+    margin-top: 15px;
+    border:1px solid #fff;
+    font-size: 14px;
+    background-color: rgb(196, 62, 0);
+    cursor: pointer;
+    color:#fff;
+    outline: none;
+    width: 100%;
+}
+
+.login-register form button:hover{
+    border:0.1px solid rgb(196, 62, 0);
+    background-color: #fff;
+    cursor: pointer;
+    color: rgb(196, 62, 0);
+    outline: none;
+}
+
+@media screen and (max-width:460px){
+    .login-register form{
+        width: 90%;
+        background: rgb(255, 255, 255, 0.9);
+    }
+}

@@ -1,0 +1,240 @@
+@media screen and (max-width:1036px){
+    footer .container p{
+        font-size: 10px;
+    }
+    footer .container #hora{
+        display: none;
+    }
+    #container{
+        margin-top: -45px;
+    }
+    header .btn_menu{
+        display: block;
+    }
+    nav{
+        position: absolute;
+        width: 100%;
+        left: -100%;
+        transition: 0.5s all;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+        -o-transition: 0.5s all;
+    }
+    nav ul{
+        flex-direction: column;
+    }
+    nav ul li:hover ul{
+        display: none;
+    }
+    nav ul li{
+        width: 100%;
+        border-bottom: 1px solid rgb(143, 142, 142);
+    }
+    nav ul li a{
+        text-align: left;
+        width: 100%;
+    }
+    nav ul li ul{
+        position: relative;
+        border-radius: 0;
+    }
+    nav ul li ul li:last-child{
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+    nav .principal .arrow{
+        float: right;
+    }
+    div .optionsBar p{
+        font-size: 11px;
+    }
+    div .optionsBar span .user{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:676px){
+    div .optionsBar p{
+        color: #525151;
+    }
+}
+
+@media screen and (max-width:900px){
+    #hora{
+        font-size: 2px;
+        color: #525151;
+    }
+    .header .imgHeader{
+        margin-left: -500px;
+    }
+}
+
+@media screen and (max-width:600px){
+    #hora{
+        display: none;
+    }
+}
+
+@media screen and (max-width:980px){
+    .dashboard{
+        flex-wrap: wrap;
+    }
+    div .dashboard a{
+        width: 50%;
+        border: 1px solid #ccc;
+    }
+    div .containerDataUser, div .containerDataEmpresa{
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    #container .titlePanelControll{
+        font-size: 12pt !important;
+    }
+    #container .logoUser,  #container .logoCompany{
+        width: 150px;
+        height: 150px;
+    }
+
+    /* LISTA DE USUARIOS */
+
+    .r_user{
+        margin-top: -5px !important;
+    }
+    .r_user h1{
+        font-size: 11pt !important;
+    }
+    .btn_new{
+        margin: 0;
+        margin-left: 20px;
+        padding: 5px 5px !important;
+        font-size: 8pt;
+        
+    }
+    .form_search{
+        width: 100%;
+        margin-top: -8px;
+        border: 0;
+    }
+    .containerTableResponsive{
+        width: 100%;
+        border: 5px solid #ccc;
+        overflow: scroll;
+    }
+    .table{
+        width: 850px;
+    }
+    table td, table th{
+        padding: 5px;
+        font-size: 9pt;
+    }
+}
+
+@media screen and (max-width:460px){
+    #hora{
+        display: none;
+    }
+    div .optionsBar .user{
+        display: none;
+    }
+    div .optionsBar span{
+        color: #525151;
+        margin-left: 50px;
+    }
+    div .dashboard a{
+        padding: 5px 2px;
+    }
+    div .dashboard p{
+        font-size: 9pt;
+    }
+    div .dashboard span{
+        font-size: 10pt;
+    }
+    div .divDataUser label{
+        margin-left: 0 !important;
+    }
+    footer .container p{
+        font-size: 10px;
+    }
+    footer .container #hora{
+        display: none;
+    }
+    footer .container .a_responsive{
+        display: none;
+    }
+    footer .container span{
+        display: none;
+    }
+}
+
+@media screen and (max-width:490px){
+    #container .form_register{
+        width: 100%;
+        margin-bottom: 80px;
+    }
+    #container .form_register form{
+        padding: 10px;
+        margin-top: -5px;
+    }
+    #container .form_register .alert{
+        margin-top: -10px;
+    }
+    #container .form_register .alert p{
+        padding: 5px;
+    }
+    #container .msg_save{
+        font-size: 10pt;
+    }
+    #container .msg_error{
+        font-size: 10pt;
+    }
+    footer{
+        position: relative !important;
+        bottom: auto;
+	    width: 100%;
+    }
+    .form_register h1{
+        font-size: 12pt;
+    }
+    .cont_venta{
+        margin-top: -60px !important;
+        padding: 10px;
+    }
+    .bodyModal{
+        padding: 10px !important;
+    }
+    div .action_Factura{
+        margin-left: 0px !important;
+    }
+    .containerTableResponsive .link_delete i, .containerTableResponsive .link_add i{
+        display: none;
+    }
+    div h5{
+        font-size: 10pt;
+    }
+    .form_search{
+        margin-bottom: 10px;
+    }
+    .totalfactura span{
+        font-size: 8pt !important;
+        margin-top: -2px;
+    }
+    .totalfactura{
+        font-size: 9pt !important;
+        margin-top: 16px;
+    }
+}
+
+@media screen and (max-width:355px){
+    div .optionsBar .close{
+        margin-left: -35px;
+    }
+    div .optionsBar .photouser{
+        display: none;
+    }
+    
+}

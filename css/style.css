@@ -1,0 +1,607 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+@import url(../assets/fonts/GothamBold.css);
+@import url(../assets/fonts/GothamBook.css);
+
+.form_register{
+    width: 450px;
+    margin: auto;
+}
+
+.form_register h1{
+    color:#525151;
+}
+
+hr{
+    border: 0;
+    background-color: #525151;
+    height: 1px;
+    margin: 10px 0;
+    display: block;
+}
+
+form{
+    background-color: #fff;
+    margin:auto;
+    padding:20px 50px;
+    border:1px solid #d1d1d1
+}
+
+label{
+    display: block;
+    font-size: 12px;
+    font-family:'GothamBook';
+    margin:15px auto 5px auto;
+}
+
+input,select{
+    margin: 5px;
+    margin-left: 0.5px;
+    display: block;
+    width: 100%;
+    font-size: 11pt;
+    padding: 5px;
+    border: 1px solid #85929e;
+    border-radius: 5px;
+}
+
+.notItemOne option:first-child{
+    display: none;
+}
+
+.btn_save{
+    font-size: 12pt;
+    background-color: #d1d1d1;
+    color: #000;
+    padding: 10px;
+    width: 100%;
+    letter-spacing: 1px;
+    border: 0;
+    cursor: pointer;
+    margin: 15px auto;
+    border: 1px solid #525151;
+}
+
+.btn_save:hover{
+    background-color: #9e9e9e;
+    color: #fff;
+    border: 1px solid #525151;
+}
+
+.alert{
+    width: 100%;
+    border-radius: 6px;
+    margin: 20px auto;
+}
+
+.msg_error{
+    background-color:rgb(219, 162, 162);
+}
+
+.msg_save{
+    background-color: rgb(173, 209, 172);
+}
+
+.alert p{
+    padding: 10px;
+}
+
+/* LISTA de usuarios */
+
+.r_user h1{
+    font-size: 35px;
+    display: inline-block;
+
+}
+
+.btn_new{
+    background-color: #d1d1d1;
+    color: #000;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding:5px 25px;
+    border-radius: 4px;
+    margin: 20px;
+    border: 1px solid #000;
+}
+
+.btn_new:hover {
+    background-color: #9e9e9e;
+    color: #fff;
+    border: 1px solid #525151;
+}
+
+table{
+    border-collapse: collapse;
+    font-size: 12pt;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+
+table th{
+    text-align: left;
+    padding:10px;
+    background: #525151;
+    color:#fff;
+}
+
+table tr:nth-child(odd){
+    background-color: #d1d1d1;
+}
+
+table tr:nth-child(even){
+    background-color: #fff;
+}
+
+table td{
+    padding:10px;
+}
+
+.btn_edit{
+    background-color: #3177b4; 
+    border: none; 
+    color: white; 
+    padding: 10px 15px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer;
+}
+
+.btn_delete{
+    background-color: #aa423d;
+    border: none; 
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btn_append{
+    background-color: #31b442; 
+    border: none; 
+    color: white; 
+    padding: 10px 15px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer;
+}
+
+.btn_edit:active, .btn_delete:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}
+
+/* PAGINADOR */
+
+.paginador ul{
+    padding:15px;
+    list-style: none;
+    background-color: #fff;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.paginador a, .page_select{
+    color:#000;
+    border:1px solid #525151;
+    padding:5px 5px;
+    display:inline-block;
+    font-size: 14px;
+    text-align: center;
+    width: 35px;
+}
+
+.paginador a:hover{
+    background-color: #9e9e9e;
+    color:#fff;
+}
+
+.page_select{
+    color:#fff;
+    background-color: #86c6ff;;
+}
+
+/*ESTILOS DE BUSCADOR*/
+
+.form_search{
+    display: flex;
+    float: right;
+    background-color: initial;
+    padding:6px;
+    border:none;
+    width: 300px;
+}
+
+.form_search .btn_search{
+    background-color: #86c6ff;
+    color:#000;
+    padding:0px 20px;
+    border-radius: 10px;
+    cursor:pointer;
+    width: 80px;
+    height: 33px;
+    margin-top: 3px;
+}
+
+.form_search .btn_search:hover{
+    background-color: #a4c5e2;
+    color:#fff;
+}
+
+/* SELECCIONAR PRODUCTO */
+
+.photo{
+    margin-bottom: 10px;
+}
+.prevPhoto {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    height: 150px;
+    border: 1px solid #CCC;
+    position: relative;
+    cursor: pointer;
+    background: url(../images/uploads/user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: auto;
+}
+.prevPhoto label{
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+.prevPhoto img{
+	width: 100%;
+	height: 100%;
+}
+.upimg, .notBlock{
+	display: none !important;
+}
+.errorArchivo{
+	font-size: 16px;
+	font-family: arial;
+	color: #cc0000;
+	text-align: center;
+	font-weight: bold; 
+	margin-top: 10px;
+}
+.delPhoto{
+	color: #FFF;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	background: #cc0000;
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	z-index: 10;
+}
+#tbl_list_productos img{
+	width: 50px;
+}
+
+.imgProductoDelete{
+	width: 175px;
+}
+
+/*============ Ventas ============*/
+.datos_cliente, .datos_venta, .title_page{
+	width: 100%;
+	max-width: 900px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+#detalle_venta tr{
+	background-color: #FFF !important;
+}
+
+#detalle_venta td{
+	border-bottom: 1px solid #CCC;
+}
+
+.datos{
+	background-color: #eaeaeb;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 2px solid #7c7c7c;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.action_cliente{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
+
+.datos label{
+	margin: 5px auto;
+}
+.wd20{
+	width: 20%;
+}
+.wd25{
+	width: 25%;
+}
+.wd30{
+	width: 30%;
+}
+.wd40{
+	width: 40%;
+}
+.wd60{
+	width: 60%;
+}
+.wd100{
+	width: 100%;
+}
+#div_registro_cliente, #add_product_venta{
+	display: none;
+}
+.displayN{
+	display: none;
+}
+.tbl_venta{
+	max-width: 900px;
+	margin: auto;
+}
+.tbl_venta tfoot td{
+	font-weight: bold;
+}
+.textright{
+	text-align: right;
+}
+.textcenter{
+	text-align: center;
+}
+.textleft{
+	text-align: left;
+}
+
+.btn_anular{
+	background-color: #f36a6a;
+	border: 0;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 10px;
+	margin: 0 3px;
+	color: #FFF;
+}
+
+/* Facturas pagadas o anuladas */
+
+.Pagada{
+    border-radius: 8px;
+    padding:8px 16px;
+    background-color: #419e4e;/*24612c*/
+    color:#fff;
+}
+
+.Anulada{
+    border-radius: 8px;
+    padding:8px 12px;
+    background-color: #da6161;/*b94747*/
+    color:#fff;
+}
+
+.Tramite{
+    border-radius: 8px;
+    padding:8px 14px;
+    background-color: #8b8d2f;
+    color:#fff;
+}
+
+/* Search date */
+
+.form_search_date{
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.form_search_date label{
+    margin: 0 10px;
+}
+
+.form_search_date input{
+    width: auto;
+}
+
+.form_search_date .btn_view{
+    padding: 8px;
+}
+
+.form_search_date .btn_view{
+    background-color: #86c6ff;
+    color:#000;
+    padding:0px 10px;
+    border-radius: 10px;
+    cursor:pointer;
+    width: 50px;
+    height: 33px;
+    margin-top: 3px;
+}
+
+.form_search_date .btn_view:hover{
+    background-color: #a4c5e2;
+    color:#fff;
+}
+
+/* BOTON VIEW FACTURA Y ANULAR Y ACCIONES*/
+
+.div_acciones{
+    display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+    justify-content: center;
+}
+
+.totalfactura{
+    display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+    justify-content: space-between;
+}
+
+.btn_view{
+    background-color: #86c6ff;
+    color:#000;
+    padding:0px 8px;
+    border-radius: 8px;
+    cursor:pointer;
+    width: 38px;
+    height: 33px;
+    margin-left: 10px;
+}
+
+.btn_view:hover{
+    background-color: #a4c5e2;
+}
+
+.btn_null{
+    margin-left: 8px;
+    background-color: #f36a6a;
+    color:#000;
+    padding:0px 8px;
+    border-radius: 8px;
+    cursor:pointer;
+    width: 38px;
+    height: 33px;
+}
+
+.btn_null:hover{
+    background-color: #f18282;
+}
+
+.inactive{
+    background-color: #A4A4A4;
+    color:#6d6c6c;
+    cursor:default;
+    border:0;
+}
+
+.inactive:hover{
+    background-color: #A4A4A4;
+}
+
+.btn_append_fac{
+    margin-left: 8px;
+    background-color: #31b442;
+    color:#000;
+    padding:0px 10px;
+    border-radius: 8px;
+    cursor:pointer;
+    width: 38px;
+    height: 33px;
+}
+
+.btn_append_fac:hover{
+    background-color: #53b661;
+    color:#000;
+}
+
+/* APPEND FOR BTN AND LIST CATEGORY */
+
+.btn_add{
+    background-color: #31b442; 
+    border: none; 
+    color: white; 
+    padding: 10px 10px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer;
+    margin-left: -108px;
+}
+
+#form_anular_fact{
+    text-align: center;
+}
+
+/* Botones de tipo de factura */
+
+.type_fact {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2px;
+}
+
+.type_fact label {
+    margin-right: 15px;
+    line-height: 32px;
+    color: black;
+}
+
+.type_fact input {
+    appearance: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    transition: 0.2s all linear;
+    margin-right: 5px;
+    position: relative;
+    top: 4px;
+}
+
+.type_fact input:checked {
+    border: 6px solid #6d6c6c;
+}
+
+.type_fact, button,
+legend{
+    color: white;
+    padding: 5px 10px;
+    border-radius: 0;
+    font-size: 14px;
+}
