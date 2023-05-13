@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2023 a las 00:36:01
+-- Tiempo de generación: 13-05-2023 a las 22:58:25
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `dbventa_inventario_compra`
+-- Base de datos: `codesys-v1`
 --
 
 DELIMITER $$
@@ -198,20 +198,22 @@ DELIMITER ;
 CREATE TABLE `t_categoria` (
   `ID_Categoria` int(11) NOT NULL,
   `Nombre_Categoria` varchar(50) NOT NULL,
-  `Descripcion` varchar(100) NOT NULL
+  `Descripcion` varchar(100) NOT NULL,
+  `ID_Estado` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `t_categoria`
 --
 
-INSERT INTO `t_categoria` (`ID_Categoria`, `Nombre_Categoria`, `Descripcion`) VALUES
-(1, 'Accesorios', 'Productos decorativos'),
-(2, 'Celulares', 'Dispositivos móviles gama media y alta'),
-(7, 'Privacy', 'Cristales de protección de celulares'),
-(8, 'Glass', 'Cristales de protección de celulares'),
-(11, 'GLASS', 'Cristales de protección de celulares'),
-(12, 'Machena Wilsone', 'Cristales de protección');
+INSERT INTO `t_categoria` (`ID_Categoria`, `Nombre_Categoria`, `Descripcion`, `ID_Estado`) VALUES
+(1, 'Accesorios', 'Productos decorativos', 1),
+(2, 'Celulares', 'Dispositivos móviles gama media y alta', 1),
+(7, 'Privacy', 'Cristales de protección de celulares', 1),
+(8, 'Glass', 'Cristales de protección de celulares', 1),
+(11, 'GLASS', 'Cristales de protección de celulares', 2),
+(12, 'Machena Wilsone', 'Cristales de protección', 2),
+(13, 'Privacy', 'Cristales de protección', 1);
 
 -- --------------------------------------------------------
 
@@ -242,65 +244,6 @@ INSERT INTO `t_cliente` (`ID_Cliente`, `Nombre`, `Apellido`, `RNC`, `Fecha_Regis
 (32, 'Manuel', 'Cepeda Gil', '402-0899804-9', '2023-04-30 21:00:36', '8093713192', 'Entrada Presa de Taveras', 'mcmanuel12@gmail.com', 1, 1),
 (36, 'Henry', 'Cavill', '402-0899804-2', '2023-04-30 21:14:14', '8093713192', 'Texas City', 'cavillhenry@gmail.com', 1, 1),
 (37, 'Juanpi Zurt', 'Garc', '402-0902314-3', '2023-05-08 19:54:27', '8093713192', 'Santiago', '', 1, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `t_compra`
---
-
-CREATE TABLE `t_compra` (
-  `ID_Ingreso` int(11) NOT NULL,
-  `ID_Proveedor` int(11) NOT NULL,
-  `ID_Usuario` int(11) NOT NULL,
-  `Cod_Producto` int(11) NOT NULL,
-  `Cantidad` int(11) NOT NULL,
-  `Num_Comprobante` varchar(50) NOT NULL,
-  `Fecha` datetime NOT NULL DEFAULT current_timestamp(),
-  `Precio` decimal(11,2) NOT NULL,
-  `Costo` decimal(11,2) NOT NULL,
-  `Total` decimal(11,2) NOT NULL,
-  `ID_Estado` int(11) NOT NULL DEFAULT 4
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `t_compra`
---
-
-INSERT INTO `t_compra` (`ID_Ingreso`, `ID_Proveedor`, `ID_Usuario`, `Cod_Producto`, `Cantidad`, `Num_Comprobante`, `Fecha`, `Precio`, `Costo`, `Total`, `ID_Estado`) VALUES
-(4, 1, 1, 1184, 12, 'JKJ125JJDHF', '2023-05-06 21:24:09', '385.00', '65.00', '975.00', 4);
-
---
--- Disparadores `t_compra`
---
-DELIMITER $$
-CREATE TRIGGER `insert_detalle_compra` AFTER INSERT ON `t_compra` FOR EACH ROW BEGIN
-    	INSERT INTO t_compra_detalle(ID_Compra, ID_Producto, Cantidad, Precio)
-        VALUES(new.ID_Ingreso, new.Cod_Producto, new.Cantidad, new.Precio);
-    END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `t_compra_detalle`
---
-
-CREATE TABLE `t_compra_detalle` (
-  `ID_Detalle_Compra` int(11) NOT NULL,
-  `ID_Compra` int(11) NOT NULL,
-  `ID_Producto` int(11) NOT NULL,
-  `Cantidad` int(11) NOT NULL,
-  `Precio` decimal(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `t_compra_detalle`
---
-
-INSERT INTO `t_compra_detalle` (`ID_Detalle_Compra`, `ID_Compra`, `ID_Producto`, `Cantidad`, `Precio`) VALUES
-(1, 4, 1184, 12, '385.00');
 
 -- --------------------------------------------------------
 
@@ -426,7 +369,8 @@ INSERT INTO `t_detalle_fac_almacenada` (`Correlativo`, `Num_Factura`, `Cod_Produ
 (296, 266, 1184, 2, '386.67'),
 (297, 267, 1184, 1, '386.67'),
 (298, 268, 1184, 1, '386.67'),
-(299, 269, 1962, 1, '13500.00');
+(299, 269, 1962, 1, '13500.00'),
+(300, 270, 1184, 1, '386.25');
 
 --
 -- Disparadores `t_detalle_fac_almacenada`
@@ -558,7 +502,10 @@ INSERT INTO `t_entrada_inventario` (`ID_Entrada`, `Cod_producto`, `Fecha`, `Cant
 (106, 3306, '2023-05-06 23:09:06', 5, '5500.00', 1),
 (107, 1184, '2023-05-12 11:32:02', 10, '385.00', 1),
 (108, 4165, '2023-05-12 11:32:14', 50, '7500.00', 1),
-(109, 1184, '2023-05-12 19:32:35', 5, '385.00', 1);
+(109, 1184, '2023-05-12 19:32:35', 5, '385.00', 1),
+(110, 1184, '2023-05-12 23:38:02', 5, '385.00', 1),
+(111, 1184, '2023-05-12 23:38:13', 5, '385.00', 1),
+(112, 1184, '2023-05-13 17:30:54', 5, '385.00', 1);
 
 -- --------------------------------------------------------
 
@@ -634,7 +581,7 @@ INSERT INTO `t_factura` (`ID_Factura`, `Fecha`, `Usuario`, `Cod_cliente`, `Total
 (180, '2023-05-08 12:14:59', 1, 1, '1160.01', 'Contado', 3),
 (181, '2023-05-08 12:38:41', 1, 1, '14273.34', 'Contado', 4),
 (182, '2023-05-08 17:48:23', 1, 1, '773.34', 'Contado', 4),
-(183, '2023-05-08 19:17:42', 38, 1, '386.67', 'Contado', 4),
+(183, '2023-05-08 19:17:42', 38, 1, '386.67', 'Contado', 3),
 (184, '2023-05-09 12:27:26', 1, 1, '773.34', 'Contado', 4),
 (185, '2023-05-09 12:27:45', 1, 1, '773.34', 'Crédito', 5),
 (186, '2023-05-09 12:37:00', 1, 1, '27000.00', 'Contado', 4),
@@ -677,7 +624,8 @@ INSERT INTO `t_factura` (`ID_Factura`, `Fecha`, `Usuario`, `Cod_cliente`, `Total
 (266, '2023-05-11 21:28:35', 1, 1, '773.34', 'Crédito', 5),
 (267, '2023-05-11 21:41:46', 1, 36, '386.67', 'Crédito', 5),
 (268, '2023-05-12 10:56:18', 38, 1, '386.67', 'Contado', 4),
-(269, '2023-05-12 10:58:24', 34, 1, '13500.00', 'Contado', 4);
+(269, '2023-05-12 10:58:24', 34, 1, '13500.00', 'Contado', 3),
+(270, '2023-05-12 23:50:30', 1, 1, '386.25', 'Crédito', 5);
 
 -- --------------------------------------------------------
 
@@ -721,8 +669,8 @@ CREATE TABLE `t_producto` (
 --
 
 INSERT INTO `t_producto` (`Cod_Producto`, `Nombre`, `Descripcion`, `Proveedor`, `Precio_Unitario`, `Cantidad`, `Fecha_Registro`, `Costo`, `Imagen`, `ID_Usuario`, `ID_Estado`, `ID_Categoria`) VALUES
-(1184, 'Cover de iphone x', 'Cover de celular', 2, '386.39', 90, '2023-04-24 17:30:39', '60', 'img_d6e138c2ace35cc5b36b924f8858db25.jpg', 35, 1, 1),
-(1962, 'Iphone x', 'Celular de Apple, IOS 13.5.1', 1, '13500.00', 157, '2023-04-24 17:30:39', '10002', 'iphone_x.PNG', 38, 1, 2),
+(1184, 'Cover de iphone x', 'Cover de celular', 2, '386.19', 105, '2023-04-24 17:30:39', '60', 'img_d6e138c2ace35cc5b36b924f8858db25.jpg', 35, 1, 1),
+(1962, 'Iphone x', 'Celular de Apple, IOS 13.5.1', 1, '13500.00', 158, '2023-04-24 17:30:39', '10002', 'iphone_x.PNG', 38, 1, 2),
 (3306, 'Galaxy A53 5G', 'Samsum Galaxy A53 5G, pantalla 120 Hz', 9, '6166.67', 18, '2023-05-04 23:59:55', '13200', 'img_1d468f06ec381d8b11ff21c16c2539bf.jpg', 1, 1, 2),
 (4165, 'Redmi note 7', 'Celular de Xiomi', 3, '7500.00', 50, '2023-04-24 18:51:23', '6700', 'img_df18ae7a108614cbc2f2d23dab71426e.jpg', 1, 1, 2),
 (4419, 'Iphone 8', 'Celular de Apple', 2, '8666.67', 0, '2023-04-24 19:29:24', '7200', 'iphone_8.PNG', 1, 1, 2),
@@ -901,7 +849,8 @@ INSERT INTO `t_salida_inventario` (`ID_Detalle_Salida`, `Cod_Fact`, `Cod_product
 (118, 266, 1184, '2023-05-11 21:28:35', 2, '386.67'),
 (119, 267, 1184, '2023-05-11 21:41:46', 1, '386.67'),
 (120, 268, 1184, '2023-05-12 10:56:18', 1, '386.67'),
-(121, 269, 1962, '2023-05-12 10:58:24', 1, '13500.00');
+(121, 269, 1962, '2023-05-12 10:58:24', 1, '13500.00'),
+(122, 270, 1184, '2023-05-12 23:50:30', 1, '386.25');
 
 -- --------------------------------------------------------
 
@@ -969,24 +918,6 @@ ALTER TABLE `t_cliente`
   ADD PRIMARY KEY (`ID_Cliente`),
   ADD KEY `FK_ID_Estado_Cliente` (`ID_Estado`),
   ADD KEY `FK_Usuario_ID` (`Usuario_ID`);
-
---
--- Indices de la tabla `t_compra`
---
-ALTER TABLE `t_compra`
-  ADD PRIMARY KEY (`ID_Ingreso`),
-  ADD KEY `FK_ID_Proveedor_Compra_Producto` (`ID_Proveedor`),
-  ADD KEY `FK_Cod_Usuario_Compra` (`ID_Usuario`),
-  ADD KEY `FK_ID_Estado_Compra` (`ID_Estado`),
-  ADD KEY `FK_Code_Product` (`Cod_Producto`);
-
---
--- Indices de la tabla `t_compra_detalle`
---
-ALTER TABLE `t_compra_detalle`
-  ADD PRIMARY KEY (`ID_Detalle_Compra`),
-  ADD KEY `FK_ID_Compra` (`ID_Compra`),
-  ADD KEY `FK_ID_Producto_Compra_Detalle` (`ID_Producto`);
 
 --
 -- Indices de la tabla `t_configuracion`
@@ -1088,25 +1019,13 @@ ALTER TABLE `t_venta_credito`
 -- AUTO_INCREMENT de la tabla `t_categoria`
 --
 ALTER TABLE `t_categoria`
-  MODIFY `ID_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `t_cliente`
 --
 ALTER TABLE `t_cliente`
   MODIFY `ID_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- AUTO_INCREMENT de la tabla `t_compra`
---
-ALTER TABLE `t_compra`
-  MODIFY `ID_Ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `t_compra_detalle`
---
-ALTER TABLE `t_compra_detalle`
-  MODIFY `ID_Detalle_Compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `t_configuracion`
@@ -1118,13 +1037,13 @@ ALTER TABLE `t_configuracion`
 -- AUTO_INCREMENT de la tabla `t_detalle_fac_almacenada`
 --
 ALTER TABLE `t_detalle_fac_almacenada`
-  MODIFY `Correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
+  MODIFY `Correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
 
 --
 -- AUTO_INCREMENT de la tabla `t_entrada_inventario`
 --
 ALTER TABLE `t_entrada_inventario`
-  MODIFY `ID_Entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `ID_Entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT de la tabla `t_estado`
@@ -1136,13 +1055,13 @@ ALTER TABLE `t_estado`
 -- AUTO_INCREMENT de la tabla `t_factura`
 --
 ALTER TABLE `t_factura`
-  MODIFY `ID_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+  MODIFY `ID_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 
 --
 -- AUTO_INCREMENT de la tabla `t_fact_detalle`
 --
 ALTER TABLE `t_fact_detalle`
-  MODIFY `ID_Fact_Detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=432;
+  MODIFY `ID_Fact_Detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=433;
 
 --
 -- AUTO_INCREMENT de la tabla `t_proveedor`
@@ -1160,7 +1079,7 @@ ALTER TABLE `t_rol`
 -- AUTO_INCREMENT de la tabla `t_salida_inventario`
 --
 ALTER TABLE `t_salida_inventario`
-  MODIFY `ID_Detalle_Salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `ID_Detalle_Salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT de la tabla `t_usuario`
@@ -1184,21 +1103,6 @@ ALTER TABLE `t_venta_credito`
 ALTER TABLE `t_cliente`
   ADD CONSTRAINT `t_cliente_ibfk_1` FOREIGN KEY (`ID_Estado`) REFERENCES `t_estado` (`ID_Estado`),
   ADD CONSTRAINT `t_cliente_ibfk_2` FOREIGN KEY (`Usuario_ID`) REFERENCES `t_usuario` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `t_compra`
---
-ALTER TABLE `t_compra`
-  ADD CONSTRAINT `t_compra_ibfk_1` FOREIGN KEY (`ID_Usuario`) REFERENCES `t_usuario` (`ID_Usuario`),
-  ADD CONSTRAINT `t_compra_ibfk_5` FOREIGN KEY (`ID_Proveedor`) REFERENCES `t_proveedor` (`ID_Proveedor`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `t_compra_ibfk_6` FOREIGN KEY (`Cod_Producto`) REFERENCES `t_producto` (`Cod_Producto`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `t_compra_ibfk_7` FOREIGN KEY (`ID_Estado`) REFERENCES `t_estado` (`ID_Estado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `t_compra_detalle`
---
-ALTER TABLE `t_compra_detalle`
-  ADD CONSTRAINT `t_compra_detalle_ibfk_1` FOREIGN KEY (`ID_Compra`) REFERENCES `t_compra` (`ID_Ingreso`);
 
 --
 -- Filtros para la tabla `t_detalle_fac_almacenada`
