@@ -459,3 +459,110 @@ footer a:hover {
 	text-align: center;
 	font-weight: bold;
 }
+
+/* POLITICA DE PRIVACIDAD */
+
+.cPoliticas {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 0 20px;
+	margin-bottom: 10px;
+}
+		
+.cPoliticas > .dvsP {
+	flex-basis: calc(100% - 10px);
+	background-color: rgba(128, 128, 128, 0.2);
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+}
+			
+.cPoliticas h2 {
+	font-size: 11pt;
+	margin-top: 0;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+			
+.cPoliticas p {
+	text-align: justify;
+	margin-bottom: 20px;
+	line-height: 1.5;
+	font-size: 10pt;
+}
+			
+@media only screen and (max-width: 768px) {
+	.cPoliticas > .dvsP {
+		flex-basis: 100%;
+	}
+}
+
+/* Estilos para los terminos */
+
+.cTerminos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 0 20px;
+	margin-bottom: 10px;
+}
+		
+.cTerminos > .divsTer {
+	flex-basis: calc(100% - 10px);
+	background-color: rgba(128, 128, 128, 0.2);
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+}
+
+.cTerminos ul {
+	list-style: none;
+	padding: 0; 
+	margin: 0; 
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.cTerminos ul li {
+	padding: 10px;
+	margin-bottom: 5px; 
+	list-style: circle;
+	margin-left: 48px;
+	font-family: 'GothamBook';
+    letter-spacing: 1px;
+	text-align: justify;
+	line-height: 30px;
+}
+
+.cTerminos ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-left: 20px;
+}
+
+.cTerminos ol li {
+	padding: 10px;
+	margin-bottom: 5px;
+	background-color: #f7f7f7;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+}
+
+.welcome{
+	margin-left: 20px;
+	line-height: 30px;
+}
