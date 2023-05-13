@@ -67,6 +67,7 @@ span {
 header{
 	position: fixed;
 	width: 100%;
+	z-index: 10000;
 }
 
 .viewMenu{
@@ -240,6 +241,7 @@ footer a:hover {
 	height: 100vh;
 	background-color: rgba(0,0,0,0.81);
 	display:none;
+	z-index: 15000;
 }
 
 .bodyModal{

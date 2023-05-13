@@ -6,7 +6,7 @@ include("./Database/conn_backend.php");
 $sql_registers =  mysqli_query($conn, "SELECT COUNT(*) as total_registers FROM t_entrada_inventario");
 $result_registers = mysqli_fetch_array($sql_registers);
 $total_registro = $result_registers['total_registers'];
-$paginas = 50;
+$paginas = 100;
 
 if(empty($_GET['pagina'])){
     $pagina = 1;

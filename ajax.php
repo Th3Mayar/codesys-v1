@@ -244,6 +244,29 @@
         echo "error";
         }
 
+        // Eliminar categoria
+        if($_POST['action'] == 'delCat'){
+
+            if(empty($_POST['id_categoria']) || !is_numeric($_POST['id_categoria'])){
+                echo "error";
+
+            }else{
+            
+            include("Database/conn_backend.php");
+            $id_categoria = $_POST['id_categoria'];
+            $query_delete = mysqli_query($conn, "UPDATE t_categoria SET ID_Estado = 2 WHERE ID_Categoria  = $id_categoria");
+
+            if($query_delete){
+                echo "ok";
+            }else{
+                echo "error";
+            }
+            mysqli_close($conn);
+            exit;
+        }
+        echo "error";
+        }
+
         // Buscar cliente por ventas
         if($_POST['action'] == 'searchCliente'){
             include("Database/conn_backend.php");

@@ -30,6 +30,8 @@ if ($result == 0) {
     $option1 = '';
     $option2 = '';
     $option3 = '';
+    $foto = '';
+    $classRemove = 'notBlock';
     while($mostrar = mysqli_fetch_array($sql)){
         $cod_producto = $mostrar['Cod_Producto'];
         $nombre = $mostrar['Nombre'];
@@ -50,6 +52,10 @@ if ($result == 0) {
                 $option3 = '<option value="'.$idcategoria.'" select>'.$nombre_categoria.'</option>';
             }
         }
+    }
+    if($img != 'exampleproduct.png'){
+        $classRemove = '';
+        $foto = '<img id="img" src="assets/images/Uploads/'.$img.'">';
     }
 }
 ?>
@@ -106,8 +112,9 @@ if ($result == 0) {
                     <div class="photo">
                         <label for="foto"><p style="font-size: 12px; margin-left: 8px;">Imagen</p></label>
                             <div class="prevPhoto">
-                            <span class="delPhoto notBlock">X</span>
+                            <span class="delPhoto <?php echo $classRemove; ?>">X</span>
                             <label for="foto"></label>
+                            <?php echo $foto;?>
                         </div>
                             <div class="upimg">
                             <input type="file" name="foto" id="foto">

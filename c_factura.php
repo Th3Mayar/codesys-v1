@@ -57,8 +57,8 @@
                 <div class="wd50">
                     <label style="font-size:14px;">Vendedor</label>
                     <p><?php echo $nombre;?></p><br>
-                    <label style="font-size:14px;">Tipo factura</label>
-                    <div class="type_fact">
+                    <label style="display:none" style="font-size:14px;">Tipo factura</label>
+                    <div class="type_fact" style="display:none">
                         <input type="radio" id="tipo_credito" name="tipo_factura" value="Crédito" />
                         <label for="Credito">Credito</label>
                         <input type="radio" id="tipo_contado" name="tipo_factura" value="Contado" checked />

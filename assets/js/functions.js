@@ -258,6 +258,43 @@ $(document).ready(function(){
         $('.modal').fadeIn();
     });
 
+    // Ventana modal de eliminar una categorias
+    $('.del_cat').click(function(e){
+        e.preventDefault();
+        var id = $(this).attr('category');
+        var action = 'infoCategory';
+
+        $.ajax({
+            url: "ajax.php",
+            type: "POST",
+            async: true,
+            data: {action:action, id:id},
+            
+            success: function(response){
+                if(response != 'error'){
+                    var info = JSON.parse(response);
+                    $('.bodyModal').html('<form action="" method="POST" name="form_del_cat" id="form_del_cat" onsubmit="event.preventDefault(); sedDelCat();">'+
+                                            '<h1 style="text-align:center;"><i class="fa-solid fa-calendar" style="font-size:45pt;"></i><br><br> Eliminar Categoria</h1>'+
+                                            '<h4 style="text-align:center; color:#6d6c6c;"><br> ¿Deseas eliminar esta categoria?</h4><br>'+
+                                            '<h3 class="name_cat" style="text-align:center;">'+info.Nombre_Categoria+'</h3><br>'+
+                                            '<input type="hidden" name="id_categoria" id="id_categoria" value="'+info.ID_Categoria+'" required>'+
+                                            '<input type="hidden" name="action" id="action" value="delCat" required>'+
+                                            '<div class="alertModal alertDelCat"></div>'+
+                                            '<a href="#" style="font-size:14px; background-color:rgb(63, 122, 56); color:#fff;" class="btn_new close_modal" onclick="closeModal(); event.preventDefault();"><i class="fa-solid fa-ban" style="color: #ffffff;"></i> Cerrar</a>'+
+                                            '<button type="submit" class="btn_new btn_eliminado" style="background-color:rgb(218, 56, 56); color:#fff;"><i class="fa-solid fa-trash" style="color: #ffffff;"></i> Eliminar</button>'+
+                                        '</form>');
+                };
+            },
+
+            error: function(error){
+                console.log(error);
+            }
+            
+        });
+        
+        $('.modal').fadeIn();
+    });
+
     $('#search_proveedor').change(function(e){
         e.preventDefault();
         var codesys = getUrl();
@@ -1078,11 +1115,12 @@ function sedDelProduct(){
         data: $('#form_del_product').serialize(),
         
         success: function(response){
-            console.log(response);
             if(response == 'error'){
+                console.log(404);
                 $('.alertDelProduct').html('<p class="msg_errorModal"><b>Error al eliminar el producto</b></p>');
 
             }else{
+                console.log(201);
                 $('.row'+pr).remove();
                 $('#form_del_product .btn_eliminado').remove();
                 $('.alertDelProduct').html('<p class="msg_saveModal"><b>Producto eliminado correctamente</b></p>');
@@ -1107,11 +1145,12 @@ function sedDelUser(){
         data: $('#form_del_user').serialize(),
         
         success: function(response){
-            console.log(response);
             if(response == 'error'){
+                console.log(404);
                 $('.alertDelUser').html('<p class="msg_errorModal"><b>Error al eliminar el usuario</b></p>');
 
             }else{
+                console.log(201);
                 $('.row'+usr).remove();
                 $('#form_del_user .btn_eliminado').remove();
                 $('.alertDelUser').html('<p class="msg_saveModal"><b>Usuario eliminado correctamente</b></p>');
@@ -1136,11 +1175,12 @@ function sedDelClient(){
         data: $('#form_del_client').serialize(),
         
         success: function(response){
-            console.log(response);
+            console.log(404);
             if(response == 'error'){
                 $('.alertDelClient').html('<p class="msg_errorModal"><b>Error al eliminar el cliente</b></p>');
 
             }else{
+                console.log(201);
                 $('.row'+cl).remove();
                 $('#form_del_client .btn_eliminado').remove();
                 $('.alertDelClient').html('<p class="msg_saveModal"><b>Cliente eliminado correctamente</b></p>');
@@ -1165,14 +1205,45 @@ function sedDelSuppl(){
         data: $('#form_del_supplier').serialize(),
         
         success: function(response){
-            console.log(response);
             if(response == 'error'){
+                console.log(404);
                 $('.alertDelSuppl').html('<p class="msg_errorModal"><b>Error al eliminar el proveedor</b></p>');
 
             }else{
+                console.log(201);
                 $('.row'+pr).remove();
                 $('#form_del_supplier .btn_eliminado').remove();
                 $('.alertDelSuppl').html('<p class="msg_saveModal"><b>Proveedor eliminado correctamente</b></p>');
+            }
+        },
+
+        error: function(error){
+            console.log(error);
+        }
+        
+    });
+}
+
+function sedDelCat(){
+    var ct = $('#id_categoria').val();
+    $('.alertDelCat').html('');
+
+    $.ajax({
+        url: "ajax.php",
+        type: "POST",
+        async: true,
+        data: $('#form_del_cat').serialize(),
+        
+        success: function(response){
+            if(response == 'error'){
+                console.log(404);
+                $('.alertDelCat').html('<p class="msg_errorModal"><b>Error al eliminar la categoria</b></p>');
+
+            }else{
+                console.log(201);
+                $('.row'+ct).remove();
+                $('#form_del_cat .btn_eliminado').remove();
+                $('.alertDelCat').html('<p class="msg_saveModal"><b>Categoria eliminada correctamente</b></p>');
             }
         },
 

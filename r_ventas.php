@@ -62,8 +62,6 @@
         <?php while($mostrar = mysqli_fetch_array($query)): 
                 if($mostrar['ID_Estado'] == 4){
                     $estado = '<span class="Pagada">Pagada</span>';
-                }else if($mostrar['ID_Estado'] == 5){
-                    $estado = '<span class="Tramite">Trámite</span>';
                 }else{
                     $estado = '<span class="Anulada">Anulada</span>';
             }
@@ -82,7 +80,7 @@
                         <button type="button" class="btn_view view_factura" cl="<?= $mostrar['Cod_cliente'];?>" f="<?= $mostrar['ID_Factura']; ?>" st="<?php echo $mostrar['Tipo_Factura'];?>"><i class="fas fa-eye"></i></button>
                     </div>
                     <?php if($idrol == 1 || $idrol == 3){ 
-                                if($mostrar['ID_Estado'] == 4 || $mostrar['ID_Estado'] == 5){?>
+                                if($mostrar['ID_Estado'] == 4){?>
                     <div class="div_factura">
                         <button type="button" name="anular" class="btn_null anular_factura" fac="<?= $mostrar['ID_Factura']; ?>"><i class="fas fa-ban"></i></button>
                     </div>
@@ -91,11 +89,6 @@
                                 <button type="button" name="inactivo" class="btn_null inactive" fac="<?= $mostrar['ID_Factura']; ?>"><i class="fas fa-ban"></i></button>
                             </div>
                     <?php }} ?>
-                    <?php if($mostrar['ID_Estado'] == 5){?>
-                        <div class="div_factura">
-                            <button type="button" class="btn_append_fac" fac="<?= $mostrar['ID_Factura']; ?>"><i class="fa-solid fa-plus"></i></button>
-                        </div>
-                    <?php } ?>
                 </div>
             </td>
             <?php endwhile;?>

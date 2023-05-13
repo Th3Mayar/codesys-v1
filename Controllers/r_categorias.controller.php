@@ -17,7 +17,8 @@ if(empty($_GET['pagina'])){
 $from = ($pagina - 1) * $paginas;
 $total_pages = ceil($total_registro / $paginas);
 
-$query = mysqli_query($conn, "SELECT * FROM t_categoria
+$query = mysqli_query($conn, "SELECT * FROM t_categoria 
+            WHERE ID_Estado = 1
             ORDER BY ID_Categoria ASC
             LIMIT $from,$paginas");
 

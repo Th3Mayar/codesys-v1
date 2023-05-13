@@ -43,14 +43,14 @@
         </thead>
         <tbody>
             <?php while($data = mysqli_fetch_array($query)): ?>
-        <tr>
-            <td class="row<?=$data['ID_Categoria'];?>"><?= $data['ID_Categoria']; ?></td>
+        <tr class="row<?=$data['ID_Categoria'];?>">
+            <td><?= $data['ID_Categoria']; ?></td>
             <td class="celName"><?= $data['Nombre_Categoria']; ?></td>
             <td class="celDesc"><?= $data['Descripcion']; ?></td>
             <td>
                 <a class="btn_edit edit_cat" category="<?php echo $data['ID_Categoria']; ?>" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                 <?php if($idrol != 4 && $idrol != 3){ ?>
-                <a class="btn_delete del_client" href="#" client="<?php echo $mostrar['ID_Cliente'];?>"><i class="fa-solid fa-trash"></i></a>
+                <a class="btn_delete del_cat" category="<?php echo $data['ID_Categoria'];?>" href="#"><i class="fa-solid fa-trash"></i></a>
                 <?php } ?>
             </td>
             <?php endwhile;?>

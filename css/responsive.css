@@ -227,6 +227,9 @@
         font-size: 9pt !important;
         margin-top: 16px;
     }
+    .btn_add{
+        margin-left: -110px !important;
+    }
 }
 
 @media screen and (max-width:355px){

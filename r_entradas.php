@@ -30,7 +30,7 @@
 </head>
 <section id="container">
     <div class="r_user">
-	<h1>📝 Lista de compras</h1>
+	<h1><i class="fa-solid fa-cart-shopping" style="color: #000;"></i> Lista de compras</h1>
     <div>
         <br>
         <h5>Buscar por fecha</h5>
